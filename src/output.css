@@ -549,12 +549,16 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .flex {
@@ -852,16 +856,16 @@ button:focus{
     width: 25%;
   }
 
+  .frh\:w-3\/4 {
+    width: 75%;
+  }
+
   .frh\:w-full {
     width: 100%;
   }
 
   .frh\:w-screen {
     width: 100vw;
-  }
-
-  .frh\:w-3\/4 {
-    width: 75%;
   }
 
   .frh\:px-10 {
