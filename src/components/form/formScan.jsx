@@ -29,9 +29,10 @@ export default function FormScan () {
                 </div>
             </div>
             <div className='frh:w-full'>
-                <Form.Group className='mt-2' controlId='cautare'>
+                <Form.Group className='mt-2 has-feedback' controlId='cautare'>
                     <Form.Label>Cautare</Form.Label>
                     <Form.Control placeholder='Cautare'></Form.Control>
+                    <span className="glyphicon glyphicon-search form-control-feedback"></span>
                 </Form.Group>
             </div>
         </div>

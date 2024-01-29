@@ -11,8 +11,6 @@ export default function Body () {
         logout();
     }
     
-   
-    
     return (
         <>
         <div className='frh:w-screen frh:px-10 frh:py-5 flex flex-col'>
