@@ -105,25 +105,25 @@ table{
 button:focus{
   outline: 0 !important;
 }
-.btn:active:hover{
+.btn-login-custom:active:hover{
   background-color: #00a65a !important;
   text-decoration: none !important;
   color: #fff !important;
 }
-.btn:hover{
-  background-color: #00a65a !important;
-  text-decoration: none !important;
-  color: #fff !important;
-}
-
-.btn:focus{
+.btn-login-custom:hover{
   background-color: #00a65a !important;
   text-decoration: none !important;
   color: #fff !important;
 }
 
+.btn-login-custom:focus{
+  background-color: #00a65a !important;
+  text-decoration: none !important;
+  color: #fff !important;
+}
 
-.btn:active:focus{
+
+.btn-login-custom:active:focus{
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
@@ -179,3 +179,76 @@ small{
 }
 /* login-page */
 
+/*body*/
+
+.btn-save-custom{
+  background-color: rgba(0, 166, 90, .3);
+  color: #00a65a !important;
+  border: 2px solid rgba(0, 166, 90, .3);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.btn-save-custom:hover{
+  text-decoration: none;
+  outline: 0 !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+button:focus{
+  outline: 0 !important;
+}
+.btn-save-custom:active:hover{
+  background-color: #00a65a !important;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+.btn-save-custom:hover{
+  background-color: #00a65a !important;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.btn-save-custom:focus{
+  background-color: #00a65a !important;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.btn-save-custom:active:focus{
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+
+.btn-logout{
+  background-color: #d9534f;
+}
+
+
+.btn:active:hover{
+  background-color: #00a65a !important;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+.btn:hover{
+  background-color: #00a65a !important;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.btn:focus{
+  background-color: #00a65a !important;
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+
+.btn:active:focus{
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+/*body*/
