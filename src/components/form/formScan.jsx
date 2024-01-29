@@ -2,12 +2,12 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
+import { Search } from './search';
 
 export default function FormScan () {
 
     const [barcode, setBarcode] = useState('');
     const [cantitate, setCantitate] = useState('');
-    const [search, setSearch] = useState('');
 
     return(
         <div className='flex flex-col'>
@@ -28,13 +28,7 @@ export default function FormScan () {
                     <Button className="frh:h-full w-full btn btn-block btn-flat btn-save-custom"><FontAwesomeIcon className='frh:text-7xl leading-10' icon={faSave}/></Button>
                 </div>
             </div>
-            <div className='frh:w-full'>
-                <Form.Group className='mt-2 has-feedback' controlId='cautare'>
-                    <Form.Label>Cautare</Form.Label>
-                    <Form.Control placeholder='Cautare'></Form.Control>
-                    <span className="glyphicon glyphicon-search form-control-feedback"></span>
-                </Form.Group>
-            </div>
+            <Search />
         </div>
     );
 }

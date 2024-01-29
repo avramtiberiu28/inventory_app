@@ -55,6 +55,19 @@ app.get("/aduArticoleScanate/:nr_tableta", (req, res) => {
         res.send(result)
     })
 })
+
+app.get("/search/:string", (req, res) => {
+    const string = req.params.string;
+    console.log(string)
+    let sql_query = `SELECT * FROM nomenclator WHERE search_description LIKE "%${string}%" OR cod_mrf LIKE "%${string}%" OR brand LIKE "%${string}%" OR barcode LIKE "%${string}%"`;
+    console.log(sql_query);
+    db.query(sql_query, (err, result) => {
+        if(err) {
+            console.log(err)
+        }
+        res.send(result)
+    })
+})
   /*app.post("/login", (req,res)=>{
     const username = req.body.username;
     const password = req.body.password;
