@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Form} from 'react-bootstrap'
 import axios from 'axios'
-export function Search () {
+export function Search ({setBarcode, setCantitate, focusCantitate }) {
     const API_URL = import.meta.env.VITE_API_URL;
     
     const [search, setSearch] = useState('');
@@ -26,13 +26,27 @@ export function Search () {
                 finally{
                     setIsSearching(false);
                 }
-            }, 1000)
+            }, 500)
         }
         else{
             setSearchResults([]);
         }
     };
 
+    const handleItemClick = (barcode) => {
+        setBarcode(barcode); // Setează valoarea câmpului de căutare cu barcode-ul selectat
+        setCantitate('');
+        setSearchResults([]);
+        focusCantitate();
+
+        setSearch(prevSearch => {
+            console.log('Prev Search:', prevSearch);
+            if (prevSearch !== '') {
+                return '';
+            }
+            return prevSearch;
+        });
+    };
 
     return (
         <div className='frh:w-full'>
@@ -46,13 +60,19 @@ export function Search () {
                 <span className="glyphicon glyphicon-search form-control-feedback"></span>
             </Form.Group>
             {searchResults.length > 0 && (
-                <div>
-                    <ul>
-                        {searchResults.map((result, index) => (
-                            <li key={index}>{result.description} {result.quantity}</li>
-                        ))}
-                    </ul>
-                </div>
+                <ul className="block mt-2 border-solid border-2 border-gray-500 search-result">
+                    {searchResults.map((result, index) => (
+                        <li key={index} onClick={() => handleItemClick(result.barcode)}>
+                            <dl>
+                                <dt>
+                                    {result.description}
+                                </dt>
+                                Cod_mrf: {result.cod_mrf} | Cod bara: {result.barcode} | UM: {result.mcc_um}
+                                <dt>---------------------------------------------------</dt>
+                            </dl>
+                        </li>
+                    ))}
+                </ul>
             )}
         </div>
     )

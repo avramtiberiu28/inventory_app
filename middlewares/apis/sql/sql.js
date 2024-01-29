@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
 app.get("/aduArticoleScanate/:nr_tableta", (req, res) => {
     const nr_tableta = req.params.nr_tableta;
     console.log(nr_tableta)
-    let sql_query = `SELECT * FROM inventar WHERE nr_tableta = ${nr_tableta} ORDER BY nr_crt DESC`;
+    let sql_query = `SELECT description, quantity FROM inventar WHERE nr_tableta = ${nr_tableta} ORDER BY nr_crt DESC`;
     db.query(sql_query, (err, result) => {
         if(err) {
             console.log(err)
