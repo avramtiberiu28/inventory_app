@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {Form} from 'react-bootstrap'
 import axios from 'axios'
+import { ThreeDots } from "react-loader-spinner";
 export function Search ({setBarcode, setCantitate, cantitate, focusCantitate }) {
     const API_URL = import.meta.env.VITE_API_URL;
     
@@ -57,6 +58,7 @@ export function Search ({setBarcode, setCantitate, cantitate, focusCantitate }) 
                 ></Form.Control>
                 <span className="glyphicon glyphicon-search form-control-feedback"></span>
             </Form.Group>
+            {isSearching && <ThreeDots visible={true} height={40} width={40} color="#00a65a" ariaLabel="Incarcare...">Incarcare...</ThreeDots>}
             {searchResults.length > 0 && (
                 <ul className="block mt-2 border-solid border-2 border-gray-500 search-result">
                     {searchResults.map((result, index) => (
