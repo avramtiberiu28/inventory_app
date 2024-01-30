@@ -67,7 +67,7 @@ export default function FormScan ({ setRegistrationResult }) {
                     <Form>
                         <Form.Group className='mb-2' controlId='cantitate'>
                             <Form.Label>Cantitate</Form.Label>
-                            <Form.Control inputMode='numeric' ref={cantitateRef} onChange={(e) => {setCantitate(e.target.value)}} value={cantitate} type='input'></Form.Control>
+                            <Form.Control inputMode='numeric' ref={cantitateRef} pattern='[0-9]*' onChange={(e) => {setCantitate(e.target.value)}} value={cantitate} type='input'></Form.Control>
                         </Form.Group>
                         <Form.Group controlId='barcode'>
                             <Form.Label>Barcode</Form.Label>
