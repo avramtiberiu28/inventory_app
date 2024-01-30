@@ -32,6 +32,7 @@ export default function Table(){
             fixedHeader: true,
             info: false,
             paging: false,
+            scrollCollapse: true,
             scrollY: '42vh',
             scrollX: '90vw',
             lengthChange: false,

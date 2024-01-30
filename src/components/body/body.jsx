@@ -50,7 +50,7 @@ export default function Body () {
 
     return (
         <>
-        <div className='frh:w-screen frh:px-10 frh:py-5 flex flex-col'>
+        <div className='frh:w-screen frh:px-10 frh:py-5 flex flex-col body'>
             {/*{isLoading && <TailSpin className='spinner' visible={true} height={80} width={80} color="#00a65a" ariaLabel="Incarcare...">Incarcare...</TailSpin>}*/}
             <FormScan setRegistrationResult={setRegistrationResult}/>
             <Table />
