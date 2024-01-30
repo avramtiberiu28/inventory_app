@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Form} from 'react-bootstrap'
 import axios from 'axios'
-export function Search ({setBarcode, setCantitate, focusCantitate }) {
+export function Search ({setBarcode, setCantitate, cantitate, focusCantitate }) {
     const API_URL = import.meta.env.VITE_API_URL;
     
     const [search, setSearch] = useState('');
@@ -10,7 +10,6 @@ export function Search ({setBarcode, setCantitate, focusCantitate }) {
 
 
     const handleSearch = async () => {
-        console.log(search.length);
         if(search.length >= 3){
             setIsSearching(true)
             setTimeout(async () => {
@@ -18,7 +17,6 @@ export function Search ({setBarcode, setCantitate, focusCantitate }) {
                     // Trimite cererea către server cu primele 3 caractere
                     const response = await axios.get(`http://${API_URL}:3002/search/${search}`);
                     setSearchResults(response.data);
-                    console.log(response.data)
                 }
                 catch (error) {
                     console.error('Eroare la căutare:', error);
@@ -35,12 +33,11 @@ export function Search ({setBarcode, setCantitate, focusCantitate }) {
 
     const handleItemClick = (barcode) => {
         setBarcode(barcode); // Setează valoarea câmpului de căutare cu barcode-ul selectat
-        setCantitate('');
         setSearchResults([]);
-        focusCantitate();
-
+        if(cantitate == ''){
+            focusCantitate();
+        }
         setSearch(prevSearch => {
-            console.log('Prev Search:', prevSearch);
             if (prevSearch !== '') {
                 return '';
             }
@@ -56,6 +53,7 @@ export function Search ({setBarcode, setCantitate, focusCantitate }) {
                     placeholder='Cautare'
                     onChange={(e) => setSearch(e.target.value)}
                     onKeyUp={handleSearch}
+                    value={search}
                 ></Form.Control>
                 <span className="glyphicon glyphicon-search form-control-feedback"></span>
             </Form.Group>

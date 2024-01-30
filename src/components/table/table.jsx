@@ -1,4 +1,8 @@
 import { useEffect } from "react";
+import $ from 'jquery';
+import 'datatables.net';
+import DataTable from "datatables.net-dt";
+import 'datatables.net-responsive-dt';
 
 export default function Table(){
     const API_URL = import.meta.env.VITE_API_URL;
@@ -12,6 +16,10 @@ export default function Table(){
         }
     }, []);
 
+
+    const handleRowClick = (data) => {
+        console.log(data);
+    }
 
     const initializeDataTable = () => {
         let nr_tableta = localStorage.nr_tableta;
@@ -51,11 +59,11 @@ export default function Table(){
                 },
             },
             createdRow: function (row, data, index){
-                console.log('row: ',row, 'data: ',data, 'index: ',index)
-                //row.addEventListener('click', () => handleRowClick(data));
+                //console.log('row: ',row, 'data: ',data, 'index: ',index)
+                row.addEventListener('click', () => handleRowClick(data));
             },
             rowCallback: function(tr, row, data, index) {
-                console.log('tr: ', tr, 'row: ', row, 'data: ', data, 'index: ', index)
+                //console.log('tr: ', tr, 'row: ', row, 'data: ', data, 'index: ', index)
                 //$(tr).prop('id', row.id_ticket);
                 //$(tr).attr('selected', false);
             },

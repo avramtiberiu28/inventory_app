@@ -15,13 +15,11 @@ app.post('/login', (req, res) => {
         const { username, password } = req.body;
         console.log(username, password);
         let sql_query = `SELECT * FROM users WHERE nr_tableta='${username}' AND password=MD5('${password}')`;
-        console.log(sql_query);
         // Verifică în baza de date dacă există un utilizator cu aceste credențiale
         db.query(sql_query, (err, result) => {
             if(err) {
                 console.log(err)
             } 
-            console.log(result);
             if (result.length !== 0) {
                 // Dacă există un utilizator cu aceste credențiale, generăm un token JWT
                 const token = jwt.sign({ username }, 'secret_key', { expiresIn: '1h' });
@@ -45,22 +43,18 @@ app.post('/login', (req, res) => {
 
 app.get("/aduArticoleScanate/:nr_tableta", (req, res) => {
     const nr_tableta = req.params.nr_tableta;
-    console.log(nr_tableta)
-    let sql_query = `SELECT description, quantity FROM inventar WHERE nr_tableta = ${nr_tableta} ORDER BY nr_crt DESC`;
+    let sql_query = `SELECT item_no, description, quantity FROM scanate WHERE nr_tableta = ${nr_tableta} ORDER BY nr_crt DESC`;
     db.query(sql_query, (err, result) => {
         if(err) {
             console.log(err)
         }
-        console.log(result)
         res.send(result)
     })
 })
 
 app.get("/search/:string", (req, res) => {
     const string = req.params.string;
-    console.log(string)
     let sql_query = `SELECT * FROM nomenclator WHERE search_description LIKE "%${string}%" OR cod_mrf LIKE "%${string}%" OR brand LIKE "%${string}%" OR barcode LIKE "%${string}%"`;
-    console.log(sql_query);
     db.query(sql_query, (err, result) => {
         if(err) {
             console.log(err)
@@ -68,17 +62,20 @@ app.get("/search/:string", (req, res) => {
         res.send(result)
     })
 })
-  /*app.post("/login", (req,res)=>{
-    const username = req.body.username;
-    const password = req.body.password;
-    let sql_query = `SELECT * FROM users WHERE username='${username}' AND password=MD5('${password}')`;
+app.post("/addItemToInventory", (req,res)=>{
+    const barcode = req.body.barcode;
+    const cantitate = req.body.cantitate;
+    const nr_tableta = req.body.nr_tableta;
+    console.log('Barcode: '+barcode,'Cantitate: '+cantitate, 'Tableta NR: '+nr_tableta, 'Req.Body: '+req.body );
+    let sql_query = `Call addItemToInventory('${barcode}', '${cantitate}', '${nr_tableta}')`;
     db.query(sql_query, (err,result)=>{
         if(err) {
             console.log(err)
         } 
+        console.log(result);
         res.send(result)
-    });   
-});*/
+    });
+})
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on ${PORT}`)
