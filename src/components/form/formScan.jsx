@@ -37,16 +37,22 @@ export default function FormScan ({ setRegistrationResult }) {
         //await new Promise(resolve => setTimeout(resolve, 10000));
         try {
             const response = await axios.post(`http://${API_URL}:3002/addItemToInventory`, { barcode, cantitate : cantitateValue, nr_tableta });
-            if (response.data[0][0].CRUD === 'Create' || response.data[1][0].CRUD === 'Update') {
-                setBarcode('');
-                setCantitate('');
-                const url = `http://${API_URL}:3002/aduArticoleScanate/${nr_tableta}`;
-                handleDataUpdate(url);
-                setRegistrationResult('success');
-            } 
-            else {
-                console.error('Eroare la adăugarea elementului în inventar:', response);
-                setRegistrationResult('error');
+            if (response.data[0][0].item_no == null || response.data[0][0] == null){
+                console.log('Eroare: articolul nu exista in baza de date, ', response);
+                setRegistrationResult('warning');
+            }
+            else{
+                if (response.data[0][0].CRUD == 'Create' || response.data[1][0].CRUD == 'Update') {
+                    setBarcode('');
+                    setCantitate('');
+                    const url = `http://${API_URL}:3002/aduArticoleScanate/${nr_tableta}`;
+                    handleDataUpdate(url);
+                    setRegistrationResult('success');
+                } 
+                else {
+                    console.error('Eroare la adăugarea elementului în inventar:', response);
+                    setRegistrationResult('error');
+                }
             }
         } 
         catch (error) {

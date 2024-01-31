@@ -585,6 +585,10 @@ video {
   width: 100%;
 }
 
+.resize {
+  resize: both;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -902,6 +906,11 @@ button:focus{
   background-color: #f87c7c;
   color: white;
   border-color: #dd4b39;
+}
+
+.alert-warning{
+  width: 90%;
+  background-color: #f0ad4e;
 }
 
 /*body*/

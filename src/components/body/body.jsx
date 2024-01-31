@@ -42,12 +42,23 @@ export default function Body () {
                 </Alert>
             );
         }
+        else if (registrationResult === 'warning') {
+            return (
+                <Alert className='alert' style={{opacity: 1}} variant='warning'>
+                    Articolul nu se afla in baza de date.
+                </Alert>
+            );
+        }
         else {
             return null;
         }
       };
     
-
+      // Ascultă evenimentul de deschidere a tastaturii
+      window.addEventListener('resize', () => {
+        console.log('test');
+        // Verifică dacă tastatura este deschisă sau închisă și ajustează poziția notificării
+    });
     return (
         <>
         <div className='frh:w-screen frh:px-10 frh:py-5 flex flex-col body'>
