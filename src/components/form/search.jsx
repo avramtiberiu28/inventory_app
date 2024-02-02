@@ -3,7 +3,7 @@ import {Form} from 'react-bootstrap'
 import axios from 'axios'
 import { ThreeDots } from "react-loader-spinner";
 export function Search ({setBarcode, setCantitate, cantitate, focusCantitate }) {
-    const API_URL = import.meta.env.VITE_API_URL;
+    //const API_URL = import.meta.env.VITE_API_URL;
     
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);

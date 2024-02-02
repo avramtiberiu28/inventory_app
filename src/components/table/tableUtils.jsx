@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 
-const API_URL = import.meta.env.VITE_API_URL;
+//const API_URL = import.meta.env.VITE_API_URL;
 
 export const handleDataUpdate = async (url) => {
     if (url === undefined) {

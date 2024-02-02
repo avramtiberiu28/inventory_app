@@ -5,7 +5,7 @@ import DataTable from "datatables.net-dt";
 import 'datatables.net-responsive-dt';
 
 export default function Table(){
-    const API_URL = import.meta.env.VITE_API_URL;
+    //const API_URL = import.meta.env.VITE_API_URL;
     useEffect(() => {
         initializeDataTable();
 

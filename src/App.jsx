@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './components/login/AuthContext';
 import Login from './components/login/login';
 import Body from './components/body/body';
-
+import './globals';
 
 function PrivateRoute({ children }) {
   const { isLoggedIn } = useAuth();

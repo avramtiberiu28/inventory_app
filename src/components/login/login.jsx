@@ -5,7 +5,7 @@ import { useAuth } from './AuthContext'; // Asigurați-vă că ați importat cor
 import {Navigate} from 'react-router-dom'
 
 export default function Login() {
-    const API_URL = import.meta.env.VITE_API_URL;
+    //const API_URL = import.meta.env.VITE_API_URL;
     const { login, isLoggedIn } = useAuth(); // Folosirea hook-ului de autentificare
     
 

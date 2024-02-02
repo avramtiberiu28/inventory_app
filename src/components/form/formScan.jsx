@@ -27,7 +27,7 @@ export default function FormScan ({ setRegistrationResult }) {
 
 
     const handleAddItemToInventory = async () => {
-        const API_URL = import.meta.env.VITE_API_URL;
+        //const API_URL = import.meta.env.VITE_API_URL;
         const nr_tableta = localStorage.nr_tableta;
         setIsLoading(true);
         let cantitateValue = cantitate;
