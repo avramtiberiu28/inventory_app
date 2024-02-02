@@ -5,6 +5,7 @@ import Login from './components/login/login';
 import Body from './components/body/body';
 import './globals';
 
+
 function PrivateRoute({ children }) {
   const { isLoggedIn } = useAuth();
 
