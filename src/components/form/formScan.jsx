@@ -27,7 +27,6 @@ export default function FormScan ({ setRegistrationResult }) {
 
 
     const handleAddItemToInventory = async () => {
-        //const API_URL = import.meta.env.VITE_API_URL;
         const nr_tableta = localStorage.nr_tableta;
         setIsLoading(true);
         let cantitateValue = cantitate;
@@ -93,7 +92,7 @@ export default function FormScan ({ setRegistrationResult }) {
                     </Form>
                 </div>
                 <div className='frh:w-1/4 frh:pl-5'>
-                    <Button className="frh:h-full w-full btn btn-block btn-flat btn-save-custom" type='submit' onClick={ (e) =>  {handleAddItemToInventory(); barcodeRef.current.focus();}}><FontAwesomeIcon className='frh:text-7xl leading-10' icon={faSave}/></Button>
+                    <Button className="frh:h-full w-full btn btn-block btn-flat btn-save-custom" type='submit' onClick={ (e) =>  {handleAddItemToInventory(); /*barcodeRef.current.focus();*/}}><FontAwesomeIcon className='frh:text-7xl leading-10' icon={faSave}/></Button>
                 </div>
             </div>
             <Search setBarcode={setBarcode} setCantitate={setCantitate} focusCantitate={focusCantitate} cantitate={cantitate}/>

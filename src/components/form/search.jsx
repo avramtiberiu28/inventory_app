@@ -1,56 +1,63 @@
-import { useState } from "react";
-import {Form} from 'react-bootstrap'
-import axios from 'axios'
+import { useState, useEffect, useRef } from "react";
+import { Form } from 'react-bootstrap';
+import axios from 'axios';
 import { ThreeDots } from "react-loader-spinner";
-export function Search ({setBarcode, setCantitate, cantitate, focusCantitate }) {
-    //const API_URL = import.meta.env.VITE_API_URL;
-    
+
+export function Search({ setBarcode, setCantitate, cantitate, focusCantitate }) {
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
+    const searchRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchRef.current && !searchRef.current.contains(event.target)) {
+                setSearch('');
+                setSearchResults([]);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
 
     const handleSearch = async () => {
-        if(search.length >= 3){
-            setIsSearching(true)
+        if (search.length >= 3) {
+            setIsSearching(true);
             setTimeout(async () => {
                 try {
-                    // Trimite cererea către server cu primele 3 caractere
                     const response = await axios.get(`http://${API_URL}:3002/search/${search}`);
                     setSearchResults(response.data);
                 }
                 catch (error) {
                     console.error('Eroare la căutare:', error);
                 }
-                finally{
+                finally {
                     setIsSearching(false);
                 }
-            }, 500)
-        }
-        else{
+            }, 500);
+        } else {
             setSearchResults([]);
         }
     };
 
     const handleItemClick = (barcode) => {
-        setBarcode(barcode); // Setează valoarea câmpului de căutare cu barcode-ul selectat
+        setBarcode(barcode);
         setSearchResults([]);
-        if(cantitate == ''){
+        if (cantitate === '') {
             focusCantitate();
         }
-        setSearch(prevSearch => {
-            if (prevSearch !== '') {
-                return '';
-            }
-            return prevSearch;
-        });
+        setSearch('');
     };
 
     return (
-        <div className='frh:w-full'>
+        <div className='frh:w-full' ref={searchRef}>
             <Form.Group className='mt-2 has-feedback' controlId='cautare'>
                 <Form.Label>Cautare</Form.Label>
-                <Form.Control 
+                <Form.Control
                     placeholder='Cautare'
                     onChange={(e) => setSearch(e.target.value)}
                     onKeyUp={handleSearch}
@@ -76,5 +83,4 @@ export function Search ({setBarcode, setCantitate, cantitate, focusCantitate }) 
             )}
         </div>
     )
-
 }

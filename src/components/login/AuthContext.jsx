@@ -15,14 +15,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('nr_tableta', nr_tableta);
         // Poți face și alte operații legate de autentificare aici, dacă este necesar
         navigate('/home');
-        //return (<Navigate to={'/home'}/>)
     };
 
     const logout = () => {
         setLoggedIn(false);
-        localStorage.removeItem('loggedin');
+        localStorage.clear();
         navigate('/login');
-        //return (<Navigate to={'/login'}/>)
     };
     return (
         <AuthContext.Provider value={{ isLoggedIn, login, logout }}>

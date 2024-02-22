@@ -56,7 +56,7 @@ export default function Body () {
     
       // Ascultă evenimentul de deschidere a tastaturii
       window.addEventListener('resize', () => {
-        console.log('test');
+        //console.log('test');
         // Verifică dacă tastatura este deschisă sau închisă și ajustează poziția notificării
     });
     return (
