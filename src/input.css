@@ -268,7 +268,11 @@ button:focus{
 
 .alert{
   position: absolute;
-  bottom: 0;
+  height: 1.5rem;
+  top: 1rem;
+  margin: 0;
+  display: flex !important;
+  place-items: center;
 }
 
 .alert-success{

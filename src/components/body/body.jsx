@@ -19,7 +19,7 @@ export default function Body () {
         if (registrationResult) {
           const timeoutId = setTimeout(() => {
             setRegistrationResult(null);
-          }, 15000);
+          }, 5000);
     
           // În cazul în care componenta este dezmontată înainte ca timeout-ul să se termine, curăță timeout-ul
           return () => clearTimeout(timeoutId);
@@ -61,7 +61,7 @@ export default function Body () {
     });
     return (
         <>
-        <div className='frh:w-screen frh:px-10 frh:py-5 flex flex-col body'>
+        <div className='frh:w-screen frh:px-10 frh:py-5 frh:pt-[5rem] flex flex-col body'>
             {/*{isLoading && <TailSpin className='spinner' visible={true} height={80} width={80} color="#00a65a" ariaLabel="Incarcare...">Incarcare...</TailSpin>}*/}
             <FormScan setRegistrationResult={setRegistrationResult}/>
             <Table />
